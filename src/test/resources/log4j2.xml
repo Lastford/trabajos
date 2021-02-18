@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+  <Appenders>
+    <Console name="STDOUT" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{DATE} - %logger{56} - [%t] %-5p %c{1}:%L - [%X{appName},%X{traceId},%X{spanId},%X{spanExportable}] - userName=%X{req.userName} requestedSessionId=%X{req.requestedSessionId} remoteHost=%X{req.remoteHost} requestMethod=%X{req.requestMethod} requestURI=%X{req.requestURI} userAgent=%X{req.userAgent} - %m%n"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+  	<Logger name="org.hibernate.SQL" level="debug" additivity="false">            
+        <appender-ref ref="STDOUT"/>
+    </Logger>
+    <Root level="INFO">
+      <AppenderRef ref="STDOUT"/>
+    </Root>
+  </Loggers>
+</Configuration>
+<!--<?xml version="1.0" encoding="UTF-8"?>
+refresco de configuración del log cada 5 minutos
+<Configuration status="warn" monitorInterval="300">
+    <Properties>
+        <Property name="basePath">/servicios/springboot/arquetipo/logs
+        </Property>
+    </Properties>    
+    <Appenders>
+        <RollingFile name="fileLogger" fileName="${basePath}/app-info.log"
+                     filePattern="${basePath}/app-info-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>%d{DATE} [%t] %-5p %c{1}:%L - [%X{appName},%X{traceId},%X{spanId},%X{spanExportable}] - userName=%X{req.userName} requestedSessionId=%X{req.requestedSessionId} remoteHost=%X{req.remoteHost} requestMethod=%X{req.requestMethod} requestURI=%X{req.requestURI} userAgent=%X{req.userAgent} - %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+        </RollingFile>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{DATE} [%t] %-5p %c{1}:%L - [%X{appName},%X{traceId},%X{spanId},%X{spanExportable}] - userName=%X{req.userName} requestedSessionId=%X{req.requestedSessionId} remoteHost=%X{req.remoteHost} requestMethod=%X{req.requestMethod} requestURI=%X{req.requestURI} userAgent=%X{req.userAgent} - %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="es.correos.minerva.servicio.envio" level="info" additivity="false">
+            <appender-ref ref="fileLogger" level="info"/>
+            <appender-ref ref="console"/>
+        </Logger>
+        <Root level="info" additivity="false">
+            <appender-ref ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration> -->

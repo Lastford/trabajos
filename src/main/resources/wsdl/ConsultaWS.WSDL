@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ejb.edoc.correos.es" xmlns:impl="http://ejb.edoc.correos.es" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://ejb.edoc.correos.es" xmlns="http://www.w3.org/2001/XMLSchema">
+			
+			<element name="consultarDocumentos">
+				<complexType>
+					<sequence>
+						<element name="sXmlEntrada" nillable="true" type="xsd:string"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="consultarDocumentosResponse">
+				<complexType>
+					<sequence>
+						<element name="consultarDocumentosReturn" nillable="true" type="xsd:string"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="consultaMetadatos">
+				<complexType>
+					<sequence>
+						<element name="sXmlEntrada" nillable="true" type="xsd:string"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="consultaMetadatosResponse">
+				<complexType>
+					<sequence>
+						<element name="consultaMetadatosReturn" nillable="true" type="xsd:string"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="consulta">
+				<complexType>
+					<sequence>
+						<element name="sCodEnvio" nillable="true" type="xsd:string"/>
+						<element name="sTipoDoc" nillable="true" type="xsd:string"/>
+						<element name="sTipoDocumental" nillable="true" type="xsd:string"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="consultaResponse">
+				<complexType>
+					<sequence>
+						<element name="consultaReturn" nillable="true" type="xsd:string"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="cotejo">
+				<complexType>
+					<sequence>
+						<element name="sCvs" nillable="true" type="xsd:string"/>
+						<element name="sCodigoEnvio" nillable="true" type="xsd:string"/>
+						<element name="sCodigoEnvioAsociado" nillable="true" type="xsd:string"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="cotejoResponse">
+				<complexType>
+					<sequence>
+						<element name="cotejoReturn" nillable="true" type="xsd:string"/>
+					</sequence>
+				</complexType>
+			</element>
+		</schema>
+  </wsdl:types>
+  <wsdl:message name="cotejoRequest">
+    <wsdl:part name="parameters" element="impl:cotejo">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarDocumentosResponse">
+    <wsdl:part name="parameters" element="impl:consultarDocumentosResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="cotejoResponse">
+    <wsdl:part name="parameters" element="impl:cotejoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultarDocumentosRequest">
+    <wsdl:part name="parameters" element="impl:consultarDocumentos">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaRequest">
+    <wsdl:part name="parameters" element="impl:consulta">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaResponse">
+    <wsdl:part name="parameters" element="impl:consultaResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaMetadatosResponse">
+    <wsdl:part name="parameters" element="impl:consultaMetadatosResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaMetadatosRequest">
+    <wsdl:part name="parameters" element="impl:consultaMetadatos">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ConsultaWS">
+    <wsdl:operation name="consultarDocumentos">
+      <wsdl:input name="consultarDocumentosRequest" message="impl:consultarDocumentosRequest">
+    </wsdl:input>
+      <wsdl:output name="consultarDocumentosResponse" message="impl:consultarDocumentosResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaMetadatos">
+      <wsdl:input name="consultaMetadatosRequest" message="impl:consultaMetadatosRequest">
+    </wsdl:input>
+      <wsdl:output name="consultaMetadatosResponse" message="impl:consultaMetadatosResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consulta">
+      <wsdl:input name="consultaRequest" message="impl:consultaRequest">
+    </wsdl:input>
+      <wsdl:output name="consultaResponse" message="impl:consultaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cotejo">
+      <wsdl:input name="cotejoRequest" message="impl:cotejoRequest">
+    </wsdl:input>
+      <wsdl:output name="cotejoResponse" message="impl:cotejoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultaWSSoapBinding" type="impl:ConsultaWS">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="consultarDocumentos">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="consultarDocumentosRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultarDocumentosResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consultaMetadatos">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="consultaMetadatosRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultaMetadatosResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="consulta">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="consultaRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="consultaResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cotejo">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="cotejoRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cotejoResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsultaWSService">
+    <wsdl:port name="ConsultaWS" binding="impl:ConsultaWSSoapBinding">
+      <wsdlsoap:address location="https://edoc.correos.es:443/EDOC_WS/services/ConsultaWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
